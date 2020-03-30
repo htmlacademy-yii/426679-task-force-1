@@ -7,19 +7,24 @@
         const STATUS_PERFORMED = 'performed';
         const STATUS_FAILD = 'failed';
 
-        #Публичный метод возврата карты статуса
-        public function cardStatus() {
-            $arrayStatus = [
-                'new'       =>  'Новое',
-                'cancel'    =>  'Отмененное',
-                'work'      =>  'В работе',
-                'performed' =>  'Выполнено',
-                'failed'    =>  'Провалено'
-            ];
+        public $performerId;
+        public $customerId;
 
-            return null;
+        public $arrayStatus = [
+            'new'       =>  'Новое',
+            'cancel'    =>  'Отмененное',
+            'work'      =>  'В работе',
+            'performed' =>  'Выполнено',
+            'failed'    =>  'Провалено'
+        ];
+        
+        #Конструктор
+        public function __construct($performerId, $customerId)
+        {
+            $this->performerId = $performerId;
+            $this->customerId = $customerId;
         }
     }
 
-    
+
 ?>
