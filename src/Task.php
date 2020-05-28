@@ -1,8 +1,6 @@
 <?php
 
 namespace HtmlAcademy;
-
-    #Класс
     class Task {
         const ACTION_CANCEL = 'action_cancel'; // отменить
         const ACTION_MESSAGE = 'action_message'; //написать сообщение
@@ -16,9 +14,9 @@ namespace HtmlAcademy;
         const STATUS_PERFORMED = 'performed';
         const STATUS_FAILD = 'failed';
 
-        public $currentStatus; //состояние
-        public $performerId; //исполнитель
-        public $customerId; //клиент
+        private $currentStatus; //состояние
+        private $performerId; //исполнитель
+        private $customerId; //клиент
 
         public $arrayStatus = [
             self::STATUS_NEW  =>  'Новое',
@@ -43,39 +41,24 @@ namespace HtmlAcademy;
             $this->customerId = $customerId;
         }
 
-        public function getActionList (){
-            $result = [];
+        public function getActionList()
+        {
             $status = $this->currentStatus;
             $statusActMap = [
                 self::STATUS_NEW => [self::ACTION_CANCEL, self::ACTION_RESPOND],
                 self::STATUS_WORK => [self::ACTION_COMPLETE, self::ACTION_CANCEL]
             ];
-            switch ($status) {
-                case self::STATUS_WORK:
-                    return $result = $statusActMap[self::STATUS_WORK];
-                case self::STATUS_NEW:
-                    return $result = $statusActMap[self::STATUS_NEW];
-                default:
-                    return "Статус не установлен";
-            }
+            return $statusActMap[$status] ?? 'Статус не установлен';
         }
 
-        public function getNextStatus ($action){
+        public function getNextStatus($action)
+        {
             $actionStatusMap = [
                 self::ACTION_CANCEL => self::STATUS_CANCEL,
                 self::ACTION_DECLINE => self::STATUS_FAILD,
                 self::ACTION_COMPLETE => self::STATUS_PERFORMED
             ];
-            switch ($action) {
-                case self::ACTION_CANCEL:
-                    return $result = $actionStatusMap[self::ACTION_CANCEL];
-                case self::ACTION_DECLINE:
-                    return $result = $actionStatusMap[self::ACTION_DECLINE];
-                case self::ACTION_COMPLETE:
-                    return $result =$actionStatusMap[self::ACTION_COMPLETE];
-                default:
-                    return "Действие не выбрано";
-            }
+            return $actionStatusMap[$action] ?? 'Действие не выбрано';
         }
     }
 
