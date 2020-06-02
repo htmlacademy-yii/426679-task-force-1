@@ -12,4 +12,5 @@ assert($task->getNextStatus(Task::ACTION_COMPLETE) === Task::STATUS_PERFORMED, '
 assert($task->getActionList(Task::STATUS_WORK) === Task::STATUS_WORK,'in work');
 assert($task->getActionList(Task::STATUS_NEW) === Task::ACTION_RESPOND, 'status new');
 assert($task->getActionList(Task::STATUS_WORK) === Task::ACTION_COMPLETE,'in work');
+
 ?>
