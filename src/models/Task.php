@@ -1,6 +1,7 @@
 <?php
 
 namespace HtmlAcademy;
+
     class Task {
         const ACTION_CANCEL = 'action_cancel'; // отменить
         const ACTION_MESSAGE = 'action_message'; //написать сообщение
