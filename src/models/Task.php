@@ -1,6 +1,6 @@
 <?php
 
-namespace HtmlAcademy;
+namespace HtmlAcademy\models;
 
     class Task {
         const ACTION_CANCEL = 'action_cancel'; // отменить
