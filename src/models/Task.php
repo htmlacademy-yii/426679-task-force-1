@@ -62,5 +62,4 @@ namespace HtmlAcademy;
             return $actionStatusMap[$action] ?? 'Действие не выбрано';
         }
     }
-
 ?>
