@@ -1,6 +1,6 @@
 <?php
 
-use HtmlAcademy\models\Task;
+use htmlacademy\models\Task;
 
 require_once 'vendor/autoload.php';
 
