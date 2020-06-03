@@ -1,6 +1,7 @@
 <?php
 
-namespace HtmlAcademy;
+namespace htmlacademy\models;
+
     class Task {
         const ACTION_CANCEL = 'action_cancel'; // отменить
         const ACTION_MESSAGE = 'action_message'; //написать сообщение
@@ -61,5 +62,4 @@ namespace HtmlAcademy;
             return $actionStatusMap[$action] ?? 'Действие не выбрано';
         }
     }
-
 ?>
