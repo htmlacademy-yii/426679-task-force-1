@@ -1,7 +1,10 @@
 {
-  "autoload": {
-      "psr-4": {
-          "htmlacademy\\": "src/"
-      }
-  }
+    "name": "artem/task-forse",
+    "authors": [
+        {
+            "name": "Artem Shomin",
+            "email": "artemshomi@gmail.com"
+        }
+    ],
+    "require": {}
 }
