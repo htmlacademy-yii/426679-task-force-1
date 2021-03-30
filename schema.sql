@@ -4,6 +4,12 @@ CREATE DATABASE taskforce
 
 USE taskforce;
 
+/*Таблица городов*/
+CREATE TABLE city (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    town VARCHAR(126) NOT NULL
+);
+
 /*Таблица пользователей*/
 CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -13,7 +19,7 @@ CREATE TABLE users (
     dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_city INT,
     user_avatar VARCHAR(4000) NULL,
-    birthday_add DATE DEFAULT NULL CURRENT_TIMESTAMP,
+    birthday_add DATE DEFAULT NULL,
     user_info VARCHAR(4000) NULL,
     user_tel INT NULL,
     user_skype VARCHAR(128) NULL,
@@ -45,14 +51,8 @@ CREATE TABLE settings (
 CREATE TABLE review (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    user_review VARCHAR(4000) NULL
+    user_review VARCHAR(4000) NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
-);
-
-/*Таблица городов*/
-CREATE TABLE city (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    town VARCHAR(126) NOT NULL
 );
 
 /*Таблица статус задания*/
@@ -67,10 +67,10 @@ CREATE TABLE projects (
     dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     pr_title VARCHAR(128) NOT NULL,
     pr_descr VARCHAR(4000) NULL,
-    id_skills INT NOT NULL;
+    id_skills INT NOT NULL,
     pr_file VARCHAR(4000) NULL,
-    id_town INT NULL;
-    coordinates INT NULL;
+    id_town INT NULL,
+    coordinates INT NULL,
     pr_money INT NOT NULL,
     task_status INT(1) DEFAULT 0,
     dt_end DATE DEFAULT NULL,
