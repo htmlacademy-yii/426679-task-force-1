@@ -7,7 +7,9 @@ USE taskforce;
 /*Таблица городов*/
 CREATE TABLE city (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    town VARCHAR(126) NOT NULL
+    town VARCHAR(126) NOT NULL,
+    long POINT NULL,
+    latitude POINT NULL
 );
 
 /*Таблица пользователей*/
@@ -51,7 +53,8 @@ CREATE TABLE settings (
 CREATE TABLE review (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    user_review VARCHAR(4000) NULL,
+    recall TEXT NULL,
+    rating INT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
@@ -77,6 +80,7 @@ CREATE TABLE tasks (
     FOREIGN KEY (status_id) REFERENCES statе (id) ON DELETE CASCADE
 );
 
+/*Таблица с ролями пользователей*/
 CREATE TABLE roll (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
