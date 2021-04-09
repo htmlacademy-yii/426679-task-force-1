@@ -74,6 +74,7 @@ CREATE TABLE statе(
 /*Таблица с заданиями*/
 CREATE TABLE tasks (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
     category_id INT,
     dt_add TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     title VARCHAR(128) NOT NULL,
@@ -85,6 +86,7 @@ CREATE TABLE tasks (
     pr_money INT NOT NULL,
     status_id INT(1) DEFAULT 0,
     dt_end DATE DEFAULT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (status_id) REFERENCES statе (id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE CASCADE
 );
