@@ -8,12 +8,12 @@ USE taskforce;
 CREATE TABLE city (
     id INT AUTO_INCREMENT PRIMARY KEY,
     town VARCHAR(126) NOT NULL,
-    long POINT NULL,
+    longitude POINT NULL,
     latitude POINT NULL
 );
 
 /*Таблица с ролями пользователей*/
-CREATE TABLE roll (
+CREATE TABLE role (
     id INT AUTO_INCREMENT PRIMARY KEY,
     executor INT NOT NULL,
     customer INT NOT NULL,
