@@ -1,14 +1,17 @@
 <?php
 
-namespace htmlacademy\models;
+namespace Htmlacademy\models;
 
     class Task {
+
+        //Действия
         const ACTION_CANCEL = 'action_cancel'; // отменить
         const ACTION_MESSAGE = 'action_message'; //написать сообщение
         const ACTION_RESPOND = 'action_respond'; //откликнуться
         const ACTION_COMPLETE = 'action_complete'; //выполнено
         const ACTION_DECLINE = 'action_decline'; //отказаться
 
+        //Статус
         const STATUS_NEW = 'new';
         const STATUS_CANCEL = 'cancel';
         const STATUS_WORK = 'work';
@@ -18,6 +21,7 @@ namespace htmlacademy\models;
         private $currentStatus; //состояние
         private $performerId; //исполнитель
         private $customerId; //клиент
+
 
         public $arrayStatus = [
             self::STATUS_NEW  =>  'Новое',
@@ -34,7 +38,13 @@ namespace htmlacademy\models;
             self::ACTION_COMPLETE => "Выполнено"
         ];
 
-        #Конструктор
+        /**
+        * Task constructor.
+        * Конструктор создает экземпляр класса, в который обязательно нужно передать текущий стутус, id-исполнителя и id-заказчика
+        * Статус задания при это автоматически переходит в "новое"
+        * @param string $name наименование задания
+        * @param int $clientId идентификатор заказчика
+        */
         public function __construct($currentStatus = null, $performerId = null, $customerId = null)
         {
             $this->currentStatus = $currentStatus;
@@ -62,4 +72,3 @@ namespace htmlacademy\models;
             return $actionStatusMap[$action] ?? 'Действие не выбрано';
         }
     }
-?>
