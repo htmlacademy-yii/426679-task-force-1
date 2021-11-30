@@ -38,6 +38,9 @@ namespace Htmlacademy\models;
             self::ACTION_COMPLETE => "Выполнено"
         ];
 
+        public const ROLE_CUSTOMER = 'КЛИЕНТ';
+        public const ROLE_PERFORMER = 'ИСПОЛНИТЕЛЬ';
+
         /**
         * Task constructor.
         * Конструктор создает экземпляр класса, в который обязательно нужно передать текущий стутус, id-исполнителя и id-заказчика
