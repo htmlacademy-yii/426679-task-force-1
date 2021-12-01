@@ -1,28 +1,23 @@
 <?php
-
+declare(strict_types=1);
 use Htmlacademy\models\Task;
 
 require_once 'vendor/autoload.php';
 
-
+//текущий пользователь
+$idDoer = 2;
+//id клиента 
 $idCustomer = 2;
+//id исполнителя
 $idPerformer = 1;
-$currentStatus = Task::STATUS_WORK;
-$task = new Task($currentStatus, $idPerformer, $idCustomer);
-$isTaskStatusAll        = $task->arrayStatus;
 
+$currentStatus = Task::STATUS_NEW;
+$task = new Task($currentStatus, $idPerformer, $idCustomer,$idDoer);
 
+$isTaskStatusAll           = $task->getStatusAll();
+$isTaskActionsAll          = $task->getActionsAll();
+$isPossibleActionsForUser  = $task->getActionsUser($currentStatus);
+$isPossibleStatus          = $task->getPossibleStatus($currentStatus);
 
-if ($task->getNextStatus('action_cancel') == Task::STATUS_CANCEL) {
-    echo 'Следующий статус' . ' ' . $task->getNextStatus('action_cancel');
-}
-
-if ($task->getNextStatus(Task::STATUS_NEW) == Task::STATUS_CANCEL) {
-    echo 'Следующий статус' . ' ' . $task->getNextStatus('action_cancel');
-}
-echo '<br>';
-echo 'Доступные действия для заказчика:';
-echo '<br>';
-echo '<pre>';
-var_dump($task->getActionList());
-echo '</pre>';
+if ( $isPossibleActionsForUser ) var_dump($isPossibleActionsForUser);
+else var_dump('Для данного пользователя нет возможных действий');

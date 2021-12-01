@@ -2,15 +2,15 @@
 
     namespace Htmlacademy\models;
 
-    class ActionCansel extends Action {
+    class ActionDecline extends Action {
         public function getTitle(): string
         {
-            return 'Отказаться';
+            return 'ОТКАЗАТЬСЯ';
         }
 
         public function getInternalName(): string
         {
-            return 'ACTION_CANCEL';
+            return 'ACTION_COMPLETE';
         }
 
         public function getVerification(): bool
