@@ -33,23 +33,20 @@ namespace Htmlacademy\models;
 
         /**
         * Task constructor.
-        * Конструктор создает экземпляр класса, в который обязательно нужно передать текущий стутус, id-исполнителя и id-заказчика
-        * Статус задания при это автоматически переходит в "новое"
-        * @param string $name наименование задания
-        * @param int $clientId идентификатор заказчика
+        * Конструктор создает экземпляр класса, в который обязательно нужно передать текущий стутус, id-исполнителя и id-заказчика, 
         */
-        public function __construct($currentStatus = null, $performerId = null, $customerId = null, $idDoer=null)
+        public function __construct($currentStatus = null, $performerId = null, $customerId = null, $idDoer = null)
         {
-            $this->idDoer=$idDoer;
             $this->currentStatus = $currentStatus;
             $this->performerId = $performerId;
             $this->customerId = $customerId;
+            $this->idDoer = $idDoer;
         }
 
         //Проверяем id исполнителя с id клиента
         private function isClientOrDoer(): bool
         {
-            return $this->performerId === $this->customerId or $this->performerId === $this->performerId;
+            return $this->performerId === $this->customerId or $this->performerId === $this->idDoer;
         }
 
         public function getStatusAll(): array
