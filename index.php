@@ -1,13 +1,15 @@
 <?php
+
 declare(strict_types=1);
+
 use Htmlacademy\models\Task;
 
 require_once 'vendor/autoload.php';
 
 //текущий пользователь
-$idDoer = 2;
-//id клиента 
-$idCustomer = 3;
+$idDoer = 3;
+//id клиента
+$idCustomer = 2;
 //id исполнителя
 $idPerformer = 3;
 
@@ -19,5 +21,5 @@ $isTaskActionsAll          = $task->getActionsAll();
 $isPossibleActionsForUser  = $task->getActionsUser($currentStatus);
 $isPossibleStatus          = $task->getPossibleStatus($currentStatus);
 
-if ( $isPossibleActionsForUser ) var_dump($isPossibleActionsForUser->getTitle());
+if ($isPossibleActionsForUser) var_dump($isPossibleActionsForUser->getTitle());
 else var_dump('Для данного пользователя нет возможных действий');

@@ -2,7 +2,8 @@
 
     namespace Htmlacademy\models;
 
-    class ActionDecline extends Action {
+    class ActionDecline extends Action
+    {
         public function getTitle(): string
         {
             return 'ОТКАЗАТЬСЯ';
@@ -18,5 +19,3 @@
             return $this->performerId === $this->customerId;
         }
     }
-
-?>
