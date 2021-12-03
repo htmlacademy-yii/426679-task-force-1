@@ -2,6 +2,7 @@
 
 namespace Htmlacademy\models;
 
+use Htmlacademy\exceptions\StatusExceptions as StatusExceptions;
 class Task
 {
 
@@ -32,16 +33,27 @@ class Task
         ]
     ];
 
+    public $status = [
+        'НОВЫЙ' => 'NEW',
+        'В РАБОТЕ' => 'WORK',
+        'ОТМЕНЕНО' => 'CANCELLED',
+        'ВЫПОЛНЕНО' => 'DONE',
+        'ПРОВАЛЕНО' => 'FAILED'
+    ];
+
     /**
      * Task constructor.
      * Конструктор создает экземпляр класса, в который обязательно нужно передать текущий стутус, id-исполнителя и id-заказчика,
      */
     public function __construct($currentStatus = null, $performerId = null, $customerId = null, $idDoer = null)
     {
-        $this->currentStatus = $currentStatus;
         $this->performerId = $performerId;
         $this->customerId = $customerId;
         $this->idDoer = $idDoer;
+        if (!isset($this->status[$currentStatus])){
+            throw new StatusExceptions('Задан неверный статус');
+        }
+        $this->currentStatus = $currentStatus;
     }
 
     //Проверяем id исполнителя с id клиента
@@ -73,6 +85,9 @@ class Task
 
     public function getPossibleStatus(string $currentStatus): array
     {
+        if (!isset($this->status[$currentStatus])){
+            throw new StatusExceptions('Задан неверный статус');
+        }
         switch ($currentStatus) {
             case self::STATUS_NEW:
                 return ['work' => self::STATUS_WORK, 'canceled' => self::STATUS_CANCEL];
@@ -85,6 +100,9 @@ class Task
 
     public function getActionsUser(string $currentStatus): ?Action
     {
+        if (!isset($this->status[$currentStatus])){
+            throw new StatusExceptions('Задан неверный статус');
+        }
         if ($this->isClientOrDoer()) {
             $role = $this->performerId === $this->customerId ? self::ROLE_CUSTOMER : self::ROLE_PERFORMER;
             return new $this->nextAction[$currentStatus][$role]($this->idDoer, $this->customerId, $this->performerId);

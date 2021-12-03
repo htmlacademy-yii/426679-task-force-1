@@ -1,10 +1,12 @@
 <?php
 
 declare(strict_types=1);
+require_once 'vendor/autoload.php';
 
 use Htmlacademy\models\Task;
+use Htmlacademy\exceptions\StatusExceptions as StatusExceptions;
 
-require_once 'vendor/autoload.php';
+
 
 //текущий пользователь
 $idDoer = 3;
@@ -14,12 +16,5 @@ $idCustomer = 2;
 $idPerformer = 3;
 
 $currentStatus = Task::STATUS_NEW;
-$task = new Task($currentStatus, $idPerformer, $idCustomer, $idDoer);
 
-$isTaskStatusAll           = $task->getStatusAll();
-$isTaskActionsAll          = $task->getActionsAll();
-$isPossibleActionsForUser  = $task->getActionsUser($currentStatus);
-$isPossibleStatus          = $task->getPossibleStatus($currentStatus);
 
-if ($isPossibleActionsForUser) var_dump($isPossibleActionsForUser->getTitle());
-else var_dump('Для данного пользователя нет возможных действий');
