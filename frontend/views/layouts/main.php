@@ -10,6 +10,10 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
+use frontend\models\Users;
+use yii\db\Query;
+use yii\web\Controller;
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -30,7 +34,7 @@ AppAsset::register($this);
     <header class="page-header">
         <div class="main-container page-header__container">
             <div class="page-header__logo">
-                <a href="index.html">
+                <a href="/">
                     <svg class="page-header__logo-image" id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1634 646.35">
                         <title>taskforce_logo2-01</title>
                         <g>
@@ -126,6 +130,12 @@ AppAsset::register($this);
     <main>
         <div class="main-container">
             <?php
+                $query = new Query();
+                $query->select(['id', 'name'])->from('users')->where(['email' => 'nculliph@fc2.com'])->limit(10);
+                $rows = $query->all();
+                foreach($rows as $row){
+                    print($row['name']);
+                }
                 $content;
             ?>
         </div>
